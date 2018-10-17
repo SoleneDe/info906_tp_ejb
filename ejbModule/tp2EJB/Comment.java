@@ -1,6 +1,9 @@
 package tp2EJB;
 
+import java.util.Date;
+
 public class Comment {
-	// À chaque commentaire sera associé la date à la quelle il a été fait et le nom de celui qui l'a fait.
+	private Date date;
+	private String name;
 
 }
