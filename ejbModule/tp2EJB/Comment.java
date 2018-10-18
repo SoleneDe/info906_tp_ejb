@@ -1,33 +1,41 @@
 package tp2EJB;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
-public class Comment {
+public class Comment implements Serializable {
+	private static final long serialVersionUID = 5385411064684911918L;
+
 	private static long currentId = 0;
 	
 	@Id
 	private long id;
-	private Date date;
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date creation;
 	private String name;
 	private String content;
+	
+	public Comment() {}
 	
 	public Comment(String name, String content) {
 		this.id = ++currentId;
 		this.name = name;
 		this.content = content;
-		this.date = new Date(); // get current date
+		this.creation = new Date(); // get current date
 	}
 
 	public long getId() {
 		return id;
 	}
 
-	public Date getDate() {
-		return date;
+	public Date getCreation() {
+		return creation;
 	}
 
 	public String getName() {

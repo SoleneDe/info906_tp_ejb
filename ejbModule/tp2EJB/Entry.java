@@ -1,22 +1,30 @@
 package tp2EJB;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
-public class Entry {
+public class Entry implements Serializable {
+	private static final long serialVersionUID = -6594257572878013271L;
+
 	private static long currentId = 0;
 	
 	@Id
 	private long id;
 	private String name;
-	private Date date;
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date creation;
 	private int priority;
 	private int estimation;
 	private String description;
+	@OneToMany
 	private ArrayList<Comment> comments;
 	
 	public Entry() {}
@@ -24,7 +32,7 @@ public class Entry {
 	public Entry(String name, int priority, int estimation, String description) {
 		this.id = ++currentId;
 		this.name = name;
-		this.date = new Date();
+		this.creation = new Date();
 		this.priority = priority;
 		this.estimation = estimation;
 		this.description = description;
@@ -67,8 +75,8 @@ public class Entry {
 		return id;
 	}
 
-	public Date getDate() {
-		return date;
+	public Date getCreation() {
+		return creation;
 	}
 
 	public ArrayList<Comment> getComments() {

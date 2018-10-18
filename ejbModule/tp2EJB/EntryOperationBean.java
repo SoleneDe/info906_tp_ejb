@@ -5,8 +5,6 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
-import org.apache.jasper.tagplugins.jstl.ForEach;
-
 @Stateless
 @Remote
 public class EntryOperationBean implements EntryOperation {
@@ -18,6 +16,13 @@ public class EntryOperationBean implements EntryOperation {
 	@Override
 	public Entry getEntry(long id) {
 		return em.find(Entry.class, id);
+	}
+
+	@Override
+	public Entry createEntry(String name, int priority, int estimation, String description) {
+		Entry entry = new Entry(name, priority, estimation, description);
+		em.persist(entry);
+		return entry;
 	}
 
 	@Override
@@ -35,15 +40,6 @@ public class EntryOperationBean implements EntryOperation {
 			entry.setDescription(description);
 		
 		return entry;
-	}
-
-	@Override
-	public void deleteEntry(long id) {
-		Entry entry = em.find(Entry.class, id);
-		for (Comment comment : entry.getComments()) {
-			em.remove(comment);
-		}
-		em.remove(entry);
 	}
 
 	@Override
