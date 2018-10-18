@@ -12,6 +12,8 @@ public class Agency {
 	private Backlog backlog;
 	private String name;
 	
+	public Agency() {}
+	
 	public Agency(String name) {
 		this.id = ++currentId;
 		this.backlog = new Backlog();

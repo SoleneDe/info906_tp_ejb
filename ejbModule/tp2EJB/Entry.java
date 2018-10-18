@@ -21,10 +21,10 @@ public class Entry {
 	
 	public Entry() {}
 
-	public Entry(String name, Date date, int priority, int estimation, String description) {
+	public Entry(String name, int priority, int estimation, String description) {
 		this.id = ++currentId;
 		this.name = name;
-		this.date = date;
+		this.date = new Date();
 		this.priority = priority;
 		this.estimation = estimation;
 		this.description = description;
