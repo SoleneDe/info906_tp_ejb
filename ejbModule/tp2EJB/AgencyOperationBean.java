@@ -1,9 +1,12 @@
 package tp2EJB;
 
+import java.util.Collection;
+
 import javax.ejb.Remote;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 @Stateless
 @Remote
@@ -16,7 +19,6 @@ public class AgencyOperationBean implements AgencyOperation {
 	@Override
 	public Agency createAgency(String name) {
 		Agency agency = new Agency(name);
-		em.persist(agency.getBacklog());
 		em.persist(agency);
 		return agency;
 	}
@@ -24,6 +26,12 @@ public class AgencyOperationBean implements AgencyOperation {
 	@Override
 	public Agency getAgency(long id) {
 		return em.find(Agency.class, id);
+	}
+
+	@Override
+	public Collection<Agency> getAllAgencies() {
+		Query query = em.createQuery("SELECT * FROM AGENCY");
+		return (Collection<Agency>) query.getResultList();
 	}
 
 }

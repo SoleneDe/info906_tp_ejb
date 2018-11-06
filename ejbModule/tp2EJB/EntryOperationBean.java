@@ -20,9 +20,7 @@ public class EntryOperationBean implements EntryOperation {
 
 	@Override
 	public Entry createEntry(String name, int priority, int estimation, String description) {
-		Entry entry = new Entry(name, priority, estimation, description);
-		em.persist(entry);
-		return entry;
+		return new Entry(name, priority, estimation, description);
 	}
 
 	@Override
@@ -45,9 +43,7 @@ public class EntryOperationBean implements EntryOperation {
 	@Override
 	public Entry addComment(long id, String name, String content) {
 		Entry entry = em.find(Entry.class, id);
-		Comment comment = new Comment(name, content);
-		em.persist(comment);
-		entry.addComment(comment);
+		entry.addComment(new Comment(name, content));
 		return entry;
 	}
 
