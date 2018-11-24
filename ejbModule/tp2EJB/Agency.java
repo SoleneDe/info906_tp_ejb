@@ -13,7 +13,8 @@ import javax.persistence.OneToOne;
 
 @Entity
 public class Agency implements Serializable {
-	private static final long serialVersionUID = 9180907257967323585L;
+	
+	private static final long serialVersionUID = -2472077610751287315L;
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)

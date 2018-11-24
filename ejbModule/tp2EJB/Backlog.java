@@ -6,6 +6,7 @@ import java.util.Comparator;
 import java.util.List;
 
 import javax.persistence.CascadeType;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -17,7 +18,8 @@ import javax.persistence.OrderBy;
 
 @Entity
 public class Backlog implements Serializable {
-	private static final long serialVersionUID = -5646602840666834605L;
+	
+	private static final long serialVersionUID = 5395137346326413422L;
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -50,7 +52,7 @@ public class Backlog implements Serializable {
 		entries.sort(new Comparator<Entry>() {
 			@Override
 			public int compare(Entry e1, Entry e2) {
-				return e1.getPriority() - e2.getPriority();
+				return e2.getPriority() - e1.getPriority();
 			}
 		});
 		

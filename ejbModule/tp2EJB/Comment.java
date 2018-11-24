@@ -12,9 +12,8 @@ import javax.persistence.TemporalType;
 
 @Entity
 public class Comment implements Serializable {
-	private static final long serialVersionUID = 5385411064684911918L;
-
-	private static long currentId = 0;
+	
+	private static final long serialVersionUID = -5845022743033121291L;
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)

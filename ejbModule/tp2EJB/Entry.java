@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Date;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Embeddable;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -17,7 +18,8 @@ import javax.persistence.TemporalType;
 
 @Entity
 public class Entry implements Serializable {
-	private static final long serialVersionUID = -6594257572878013271L;
+	
+	private static final long serialVersionUID = 7800941215754563471L;
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
