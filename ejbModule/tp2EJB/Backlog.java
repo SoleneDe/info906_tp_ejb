@@ -3,6 +3,7 @@ package tp2EJB;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -24,7 +25,7 @@ public class Backlog implements Serializable {
 	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)
 	@JoinTable
 	@OrderBy("priority DESC")
-	private ArrayList<Entry> entries;
+	private List<Entry> entries;
 	private int size;
 	
 	public Backlog() {
@@ -40,7 +41,7 @@ public class Backlog implements Serializable {
 		return size;
 	}
 
-	public ArrayList<Entry> getEntries() {
+	public List<Entry> getEntries() {
 		return entries;
 	}
 	
