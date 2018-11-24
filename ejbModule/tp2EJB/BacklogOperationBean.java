@@ -35,6 +35,12 @@ public class BacklogOperationBean implements BacklogOperation {
 	}
 
 	@Override
+	public Backlog sortEntries(long id) {
+		return em.find(Backlog.class, id).sortEntries();
+		
+	}
+
+	@Override
 	public Backlog getBacklog(long id) {
 		return em.find(Backlog.class, id);
 	}
