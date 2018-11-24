@@ -4,6 +4,8 @@ import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -15,6 +17,7 @@ public class Comment implements Serializable {
 	private static long currentId = 0;
 	
 	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private long id;
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date creation;
@@ -24,7 +27,6 @@ public class Comment implements Serializable {
 	public Comment() {}
 	
 	public Comment(String name, String content) {
-		this.id = ++currentId;
 		this.name = name;
 		this.content = content;
 		this.creation = new Date(); // get current date

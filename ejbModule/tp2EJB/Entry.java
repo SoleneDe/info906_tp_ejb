@@ -7,6 +7,8 @@ import java.util.Date;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinTable;
 import javax.persistence.OneToMany;
@@ -16,10 +18,9 @@ import javax.persistence.TemporalType;
 @Entity
 public class Entry implements Serializable {
 	private static final long serialVersionUID = -6594257572878013271L;
-
-	private static long currentId = 0;
 	
 	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private long id;
 	private String name;
 	@Temporal(TemporalType.TIMESTAMP)
@@ -34,7 +35,6 @@ public class Entry implements Serializable {
 	public Entry() {}
 
 	public Entry(String name, int priority, int estimation, String description) {
-		this.id = ++currentId;
 		this.name = name;
 		this.creation = new Date();
 		this.priority = priority;
