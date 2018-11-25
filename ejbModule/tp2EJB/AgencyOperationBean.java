@@ -30,7 +30,7 @@ public class AgencyOperationBean implements AgencyOperation {
 
 	@Override
 	public Collection<Agency> getAllAgencies() {
-		Query query = em.createQuery("SELECT * FROM AGENCY");
+		Query query = em.createQuery("SELECT a FROM Agency a");
 		return (Collection<Agency>) query.getResultList();
 	}
 
