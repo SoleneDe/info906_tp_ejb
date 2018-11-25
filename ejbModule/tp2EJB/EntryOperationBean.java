@@ -20,6 +20,7 @@ public class EntryOperationBean implements EntryOperation {
 
 	@Override
 	public Entry createEntry(String name, int priority, int estimation, String description) {
+		// persistence is handled by the backlog
 		return new Entry(name, priority, estimation, description);
 	}
 

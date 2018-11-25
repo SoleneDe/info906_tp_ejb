@@ -47,6 +47,10 @@ public class Backlog implements Serializable {
 		return entries;
 	}
 	
+	/**
+	 * Sort all the entries, from high priority to low priority
+	 * @return The sorted backlog
+	 */
 	public Backlog sortEntries()
 	{
 		entries.sort(new Comparator<Entry>() {
@@ -59,6 +63,10 @@ public class Backlog implements Serializable {
 		return this;
 	}
 	
+	/**
+	 * Add a new entry in the backlog, keeping the entries sorted
+	 * @param entry The entry to add
+	 */
 	public void addEntry(Entry entry)
 	{
 		entries.add(entry);
@@ -66,6 +74,10 @@ public class Backlog implements Serializable {
 		sortEntries();
 	}
 	
+	/**
+	 * Remove the entry from the backlog
+	 * @param entry The entry to remove
+	 */
 	public void removeEntry(Entry entry)
 	{
 		entries.remove(entry);		
